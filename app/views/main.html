@@ -6,12 +6,12 @@
   ngf-allow-dir="false"
   ngf-accept="'.json,.yaml,.yml'">
 
-  <div ui-layout="{ flow : 'column', dividerSize: '8px'}">
-    <div class="editor pane" ui-layout-container>
-      <div ui-view="editor"></div>
-    </div>
-    <div class="preview pane" ui-layout-container>
+  <div ui-layout="{ flow : '', dividerSize: '0px'}">
+    <div id="preview-pane" class="preview pane" ui-layout-container>
       <div ui-view="preview"></div>
+    </div>
+	<div class="editor pane" ui-layout-container style='display: none'>
+      <div ui-view="editor"></div>
     </div>
   </div>
   <div ng-if="showAbout" ng-include="'templates/intro.html'"></div>
@@ -20,4 +20,8 @@
       <p>Drop your file here</p>
     </div>
   </div>
+  <script>
+	var previewPane = document.getElementById("preview-pane");
+	setInterval(function() {previewPane.style.height = "";}, 200);
+  </script>
 </main>
